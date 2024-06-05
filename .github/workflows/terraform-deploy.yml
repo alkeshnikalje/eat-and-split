@@ -7,7 +7,7 @@ on:
 
 jobs:
   terraform:
-    name: "Terraform Apply"
+    name: "Terraform Resource Creation and Deploy App"
     runs-on: ubuntu-latest
 
     steps:
