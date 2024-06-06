@@ -11,6 +11,9 @@ node_modules
 dist
 dist-ssr
 *.local
+tf-deploy.js
+terraform/.terraform
+terraform/.terraform.lock.hcl
 
 # Editor directories and files
 .vscode/*

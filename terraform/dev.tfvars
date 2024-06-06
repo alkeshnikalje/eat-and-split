@@ -1,3 +1,4 @@
-aws_profile = "my-aws-profile"
-aws_region  = "us-east-1"
-bucket_name = "default"
+aws_profile = "default"
+aws_region  = "us-east-2"
+bucket_name = "alkesh-react-app-bucket"
+

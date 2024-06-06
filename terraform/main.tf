@@ -42,7 +42,7 @@ resource "aws_s3_bucket_acl" "s3_bucket_acl" {
 
 #cloudFront config-
  resource "aws_cloudfront_origin_access_control" "cloudfront_oac" {
-    name                              = "My_Cloudfront-OAC"
+    name                              = "React-alkesh_Cloudfront-OAC"
     description                       = "The origin access control configuration for the Cloudfront distribution"
     origin_access_control_origin_type = "s3"
     signing_behavior                  = "always"
