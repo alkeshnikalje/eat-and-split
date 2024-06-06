@@ -35,14 +35,14 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
+      - name: Terraform Init
+        working-directory: ./terraform
+        run: terraform init
+
       - name: Set AWS profile and region
         run: |
           echo "AWS_PROFILE=default" >> $GITHUB_ENV
           echo "AWS_REGION=us-east-2" >> $GITHUB_ENV
-
-      - name: Terraform Init
-        working-directory: ./terraform
-        run: terraform init
 
       - name: Terraform plan
         working-directory: ./terraform
