@@ -41,7 +41,6 @@ jobs:
 
       - name: Set AWS profile and region
         run: |
-          echo "AWS_PROFILE=default" >> $GITHUB_ENV
           echo "AWS_REGION=us-east-2" >> $GITHUB_ENV
 
       - name: Terraform plan
