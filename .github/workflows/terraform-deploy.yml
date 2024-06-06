@@ -26,7 +26,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
-          terraform_version: 1.8.1 # Specify your Terraform version
+          terraform_version: 1.8.1
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
@@ -35,16 +35,21 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
+      - name: Set AWS profile and region
+        run: |
+          echo "AWS_PROFILE=default" >> $GITHUB_ENV
+          echo "AWS_REGION=us-east-2" >> $GITHUB_ENV
+
       - name: Terraform Init
-        working-directory: ./terraform # Ensure you're in the correct directory
+        working-directory: ./terraform
         run: terraform init
 
       - name: Terraform plan
-        working-directory: ./terraform # Ensure you're in the correct directory
+        working-directory: ./terraform
         run: terraform plan
 
       - name: Apply Terraform configuration
-        working-directory: ./terraform # Ensure you're in the correct directory
+        working-directory: ./terraform
         run: terraform apply -var-file="dev.tfvars" -auto-approve
 
       - name: Extract CloudFront distribution ID
@@ -53,7 +58,7 @@ jobs:
         run: echo "::set-output name=distribution_id::$(terraform output -raw cloudfront_distribution_id)"
 
       - name: Upload build to S3
-        run: aws s3 sync ./dist s3://my-react-bucket --delete # Added --delete flag
+        run: aws s3 sync ./dist s3://my-react-bucket --delete
 
       - name: Invalidate CloudFront cache
         run: aws cloudfront create-invalidation --distribution-id ${{ steps.extract_cloudfront_id.outputs.distribution_id }} --paths "/*"
