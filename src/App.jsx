@@ -3,6 +3,7 @@ import FriendList from "./components/friendlist";
 import Button from "./components/btn";
 import AddFriendForm from "./components/addfriendform";
 import SplitForm from "./components/splitform";
+import { Link } from "react-router-dom";
 const initialFriends = [
   {
     id: 118836,
@@ -61,6 +62,7 @@ function App() {
 
   return (
     <div className="app">
+      <Link to="/test">got to the test page</Link>
       <div className="sidebar">
         <FriendList
           friends={friends}
