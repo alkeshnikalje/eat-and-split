@@ -62,7 +62,9 @@ function App() {
 
   return (
     <div className="app">
-      <Link to="/test">got to the test page</Link>
+      <Link to="/test">
+        got to the test page {import.meta.env.VITE_MY_NAME}
+      </Link>
       <div className="sidebar">
         <FriendList
           friends={friends}

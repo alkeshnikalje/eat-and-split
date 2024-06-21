@@ -20,8 +20,11 @@ jobs:
           node-version: "20"
       - name: Install dependencies and build
         run: |
+          echo "VITE_MY_NAME=${{ secrets.VITE_MY_NAME }}" >> .env
           npm install
           npm run build
+        env:
+          VITE_MY_NAME: ${{ secrets.MY_NAME }}
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v2
